@@ -13,7 +13,7 @@ const LoginScreen = ({ navigation }) => {
   }
 
   const handleLogin = () => {
-    navigation.navigate("Dashboard")
+    navigation.navigate("MainApp")
   }
 
   return (

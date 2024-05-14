@@ -6,12 +6,12 @@ import { MAIN_COLOR } from '../utils/colors';
 const { height, width } = getScreenDimensions();
 const minOfScreen = Math.min(width, height) * 1; 
 export default SplashScreen = ({navigation}) => {
-  const [isAuth, setAuth] = useState(true); 
+  const [isAuth, setAuth] = useState(false); 
 
   useEffect(() => {
     setTimeout(() => {
       if (isAuth) {
-        navigation.navigate("Dashboard")
+        navigation.navigate("MainApp")
       } else {
         navigation.navigate("Login")
       }
