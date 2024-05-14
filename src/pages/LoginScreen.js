@@ -3,19 +3,22 @@ import { SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity, Aler
 import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleLogin = () => {
-    // Implement your login logic here
-    Alert.alert(`Hello, ${username}`)
-    // You might use an API call or other authentication mechanism here
-  };
-
   const forgottenPassword = () => {
     Alert.alert(`Contact your administrator`)
+  }
+
+  const handleLogin = () => {
+    if (username === "dhimasarista" && password === "010502") {
+      // move to dashboard screen
+      navigation.navigate("DashboardScreen")
+    } else {
+      Alert.alert("Username or Password is Wrong!")
+    }
   }
 
   return (
@@ -58,6 +61,7 @@ const LoginScreen = () => {
 };
 
 const {height, width} = getScreenDimensions()
+const minOfScreen = Math.min(width, height) * 1
 
 const styles = StyleSheet.create({
   backgroundContainer: {
@@ -66,22 +70,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logoImage: {
-    width:  250,
-    height: 250,
-    top: height/20
+    width:  minOfScreen / 1.5,
+    height: minOfScreen/ 1.5,
+    top: minOfScreen / 20
   },
   loginContainer: {
     backgroundColor: '#ffff',
     color: "black",
-    padding: 20,
+    padding: minOfScreen / 20,
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    width: width / 1.3,
-    top: height/20
+    width: minOfScreen / 1.3,
+    top: minOfScreen/30
   },
   loginTitle: {
     fontSize: 24,
@@ -91,7 +95,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     color: MAIN_COLOR,
-    padding: 15,
+    padding: minOfScreen / 50,
     marginBottom: 10,
     borderRadius: 5,
     borderColor: "black",
@@ -112,13 +116,13 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: MAIN_COLOR,
-    padding: 15,
+    padding: minOfScreen / 40,
     borderRadius: 5,
     alignItems: 'center',
   },
   loginButtonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: minOfScreen / 25,
     fontWeight: 'bold',
   },
 });
