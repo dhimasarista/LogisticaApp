@@ -10,41 +10,14 @@ import SplashScreen from './pages/SplashScreen'; // Create an SplashScreen compo
 import DashboardScreen from './pages/DashboardScreen';
 
 const App = () => {
-  const [isReady, setIsReady] = useState(false); // State for app initialization
-  const [isAuth, setAuth] = useState(false); // State for authentication status
-
-  useEffect(() => {
-    // Simulate some initialization tasks (replace with your actual logic)
-    setTimeout(() => {
-      setIsReady(true);
-    }, 2000); // Delay for 2 seconds
-  }, []);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <NavigationContainer>
-        {isReady ? (
-          isAuth ? (
-            <Stack.Navigator>
-              <Stack.Screen
-                name="DashboardScreen"
-                component={DashboardScreen}
-                options={{ headerShown: false }}
-              />
+            <Stack.Navigator initialRouteName='Splash'>
+              <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }} />
+              <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+              <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
-          ) : (
-            <Stack.Navigator>
-              <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />
-            </Stack.Navigator>
-          )
-        ) : (
-          <Stack.Navigator>
-            <Stack.Screen
-              name="initial"
-              component={SplashScreen}
-              options={{ headerShown: false }} // Hide header for SplashScreen
-            />
-          </Stack.Navigator>
-        )}
       </NavigationContainer>
     </SafeAreaView>
   );

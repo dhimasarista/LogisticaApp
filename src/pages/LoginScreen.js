@@ -13,12 +13,7 @@ const LoginScreen = ({ navigation }) => {
   }
 
   const handleLogin = () => {
-    if (username === "dhimasarista" && password === "010502") {
-      // move to dashboard screen
-      navigation.navigate("DashboardScreen")
-    } else {
-      Alert.alert("Username or Password is Wrong!")
-    }
+    navigation.navigate("Dashboard")
   }
 
   return (

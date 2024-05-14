@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
 
 const { height, width } = getScreenDimensions();
 const minOfScreen = Math.min(width, height) * 1; // Adjust factor (0.5) for desired size
-export default SplashScreen = () => {
+export default SplashScreen = ({navigation}) => {
+  const [isReady, setIsReady] = useState(false); // State for app initialization
+  const [isAuth, setAuth] = useState(false); // State for authentication status
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate("Login")
+    }, 2000); // Delay for 2 seconds
+  }, []);
   return (
     <SafeAreaView style={styles.backgroundContainer}>
       <Image
