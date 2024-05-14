@@ -4,14 +4,17 @@ import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
 
 const { height, width } = getScreenDimensions();
-const minOfScreen = Math.min(width, height) * 1; // Adjust factor (0.5) for desired size
+const minOfScreen = Math.min(width, height) * 1; 
 export default SplashScreen = ({navigation}) => {
-  const [isReady, setIsReady] = useState(false); // State for app initialization
-  const [isAuth, setAuth] = useState(false); // State for authentication status
+  const [isAuth, setAuth] = useState(true); 
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate("Login")
+      if (isAuth) {
+        navigation.navigate("Dashboard")
+      } else {
+        navigation.navigate("Login")
+      }
     }, 2000); // Delay for 2 seconds
   }, []);
   return (
