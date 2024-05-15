@@ -7,7 +7,7 @@ import LoginScreen from './pages/LoginScreen';
 import SplashScreen from './pages/SplashScreen'; // Create an SplashScreen component
 import DashboardScreen from './pages/DashboardScreen';
 import ProfileScreen from './pages/ProfileScreen';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons  from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -21,11 +21,17 @@ function MainApp() {
             options={{ 
               headerShown: false ,
               tabBarIcon: ({focused, color, size}) => (
-                <MaterialCommunityIcons name="view-dashboard" size={size} color={color} />
-              ),
-            }} 
-          />
-            <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+                <Ionicons name='ios-list' size={size} color={color}/>
+                ),
+              }} 
+            />
+            <Tab.Screen 
+              name="Profile" 
+              component={ProfileScreen} 
+              options={{ headerShown: false , tabBarIcon: ({focused, color, size}) => (
+                <Ionicons name="person" size={size} color={color}/>
+              )}} 
+            />
         </Tab.Navigator>
     );
 }
