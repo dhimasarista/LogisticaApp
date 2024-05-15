@@ -2,7 +2,7 @@ import { Button, Image, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import storage from '../utils/storage'
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
   const [username, setUsername] = useState("")
   useEffect(() => {
     setUsername(storage.getString("user.username"))
@@ -14,7 +14,13 @@ const ProfileScreen = () => {
           <Image style={styles.profileImage} source={require('../assets/images/Logistica-Logo-Dark.png')} />
         </View>
         <Text style={styles.profileName}>{username}</Text>
-        <Button title='Logout' onPress={() => {}}/>
+        <Button title='Logout' onPress={() => {
+          storage.clearAll()
+          setUsername("")
+          if (username !== null || username !== undefined || username !== "") {
+            navigation.replace("Login")
+          }
+        }}/>
       </View>
     </SafeAreaView>
   )
