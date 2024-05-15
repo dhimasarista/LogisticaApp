@@ -6,7 +6,7 @@ import { MAIN_COLOR } from '../utils/colors';
 const { height, width } = getScreenDimensions();
 const minOfScreen = Math.min(width, height) * 1; 
 export default SplashScreen = ({navigation}) => {
-  const [isAuth, setAuth] = useState(false); 
+  const [isAuth, setAuth] = useState(true); 
 
   useEffect(() => {
     setTimeout(() => {

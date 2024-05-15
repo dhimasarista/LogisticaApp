@@ -7,6 +7,7 @@ import LoginScreen from './pages/LoginScreen';
 import SplashScreen from './pages/SplashScreen'; // Create an SplashScreen component
 import DashboardScreen from './pages/DashboardScreen';
 import ProfileScreen from './pages/ProfileScreen';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -14,8 +15,17 @@ const Stack = createNativeStackNavigator();
 function MainApp() {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Dashboard" component={DashboardScreen} />
-            <Tab.Screen name="Profile" component={ProfileScreen} />
+            <Tab.Screen 
+            name="Dashboard" 
+            component={DashboardScreen} 
+            options={{ 
+              headerShown: false ,
+              tabBarIcon: ({focused, color, size}) => (
+                <MaterialCommunityIcons name="view-dashboard" size={size} color={color} />
+              ),
+            }} 
+          />
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Tab.Navigator>
     );
 }
