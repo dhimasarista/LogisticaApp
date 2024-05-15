@@ -21,7 +21,7 @@ function MainApp() {
             options={{ 
               headerShown: false ,
               tabBarIcon: ({focused, color, size}) => (
-                <Ionicons name="home" size={size} color={color}/>
+                <Ionicons name="bar-chart" size={size} color={color}/>
                 ),
               }} 
             />
@@ -29,7 +29,7 @@ function MainApp() {
               name="Profile" 
               component={ProfileScreen} 
               options={{ headerShown: false , tabBarIcon: ({focused, color, size}) => (
-                <Ionicons name="person" size={size} color={color}/>
+                <Ionicons name="logo-octocat" size={size} color={color}/>
               )}} 
             />
         </Tab.Navigator>
