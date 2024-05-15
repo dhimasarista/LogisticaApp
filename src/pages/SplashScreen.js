@@ -7,13 +7,13 @@ import storage from '../utils/storage';
 const { height, width } = getScreenDimensions();
 const minOfScreen = Math.min(width, height) * 1; 
 export default SplashScreen = ({navigation}) => {
+  const [isAuth, setAuth] = useState(false); 
   const username = storage.getString("user.username")
-  console.log(username);
-  console.log(typeof username);
+  console.log(`Username: ${username}`);
 
   useEffect(() => {
     setTimeout(() => {
-      if (username !== null || username !== undefined || username !== "") {
+      if (username !== undefined) {
         navigation.replace("MainApp")
       } else {
         navigation.replace("Login")

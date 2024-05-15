@@ -17,6 +17,7 @@ const LoginScreen = ({ navigation }) => {
     if (username === "dhimasarista" && password === "010502") {
       navigation.navigate("MainApp")
       storage.set("user.username", "dhimasarista")
+      storage.set("user.username-form-temporary", username)
     } else {
       Alert.alert("Attention", `Check your Username or Password Correctly!`)
     }
@@ -33,7 +34,7 @@ const LoginScreen = ({ navigation }) => {
           placeholderTextColor="black"
           placeholder="Username"
           onChangeText={(text) => setUsername(text)}
-          value={username}
+          value={storage.getString("user.username-form-temporary", username)}
         />
 
         <TextInput

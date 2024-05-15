@@ -17,9 +17,7 @@ const ProfileScreen = ({navigation}) => {
         <Button title='Logout' onPress={() => {
           storage.clearAll()
           setUsername("")
-          if (username !== null || username !== undefined || username !== "") {
-            navigation.replace("Login")
-          }
+          navigation.replace("Login")
         }}/>
       </View>
     </SafeAreaView>
