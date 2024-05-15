@@ -8,7 +8,7 @@ import SplashScreen from './pages/SplashScreen'; // Create an SplashScreen compo
 import DashboardScreen from './pages/DashboardScreen';
 import ProfileScreen from './pages/ProfileScreen';
 import Ionicons  from 'react-native-vector-icons/Ionicons';
-
+Ionicons.loadFont();
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +21,7 @@ function MainApp() {
             options={{ 
               headerShown: false ,
               tabBarIcon: ({focused, color, size}) => (
-                <Ionicons name="list" size={size} color={color}/>
+                <Ionicons name="home" size={size} color={color}/>
                 ),
               }} 
             />
