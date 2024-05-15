@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Button, Image, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import storage from '../utils/storage'
@@ -14,6 +14,7 @@ const ProfileScreen = () => {
           <Image style={styles.profileImage} source={require('../assets/images/Logistica-Logo-Dark.png')} />
         </View>
         <Text style={styles.profileName}>{username}</Text>
+        <Button title='Logout' onPress={() => {}}/>
       </View>
     </SafeAreaView>
   )
