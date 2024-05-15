@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
 import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
+import storage from '../utils/storage';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -15,6 +16,7 @@ const LoginScreen = ({ navigation }) => {
   const handleLogin = () => {
     if (username === "dhimasarista" && password === "010502") {
       navigation.navigate("MainApp")
+      storage.set("user.username", "dhimasarista")
     } else {
       Alert.alert("Attention", `Check your Username or Password Correctly!`)
     }

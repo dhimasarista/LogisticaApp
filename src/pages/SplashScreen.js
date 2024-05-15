@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Image, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
+import storage from '../utils/storage';
 
 const { height, width } = getScreenDimensions();
 const minOfScreen = Math.min(width, height) * 1; 
 export default SplashScreen = ({navigation}) => {
-  const [isAuth, setAuth] = useState(true); 
+  const username = storage.getString("user.username")
+  console.log(username);
+  console.log(typeof username);
 
   useEffect(() => {
     setTimeout(() => {
-      if (isAuth) {
-        navigation.navigate("MainApp")
+      if (username !== null || username !== undefined || username !== "") {
+        navigation.replace("MainApp")
       } else {
-        navigation.navigate("Login")
+        navigation.replace("Login")
       }
     }, 2000); // Delay for 2 seconds
   }, []);

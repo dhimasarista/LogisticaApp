@@ -1,15 +1,19 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-
+import storage from '../utils/storage'
 const ProfileScreen = () => {
+  const [username, setUsername] = useState("")
+  useEffect(() => {
+    setUsername(storage.getString("user.username"))
+  }, [])
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
         <View style={styles.profileImageContainer}>
           <Image style={styles.profileImage} source={require('../assets/images/Logistica-Logo-Dark.png')} />
         </View>
-        <Text style={styles.profileName}>John Doe</Text>
+        <Text style={styles.profileName}>{username}</Text>
       </View>
     </SafeAreaView>
   )

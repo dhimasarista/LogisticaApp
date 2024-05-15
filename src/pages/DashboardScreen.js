@@ -1,11 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import storage from '../utils/storage'
 
 const DashboardScreen = () => {
+  const [username, setUsername] = useState("")
+
+  useEffect(() => {
+    setUsername(storage.getString("user.username"))
+  }, [])
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.textContainer}>DashboardScreen</Text>
+      <Text style={styles.textContainer}>{username}</Text>
     </SafeAreaView>
   )
 }
