@@ -21,7 +21,7 @@ function MainApp() {
             options={{ 
               headerShown: false ,
               tabBarIcon: ({focused, color, size}) => (
-                <Ionicons name='ios-list' size={size} color={color}/>
+                <Ionicons name="list" size={size} color={color}/>
                 ),
               }} 
             />
