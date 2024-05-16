@@ -15,7 +15,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = () => {
     if (username === "dhimasarista" && password === "010502") {
-      navigation.navigate("MainApp")
+      navigation.replace("MainApp")
       storage.set("user.username", "dhimasarista")
       storage.set("user.username-form-temporary", username)
     } else {
