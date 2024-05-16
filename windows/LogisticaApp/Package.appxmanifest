@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="54ce5ab7-4877-4263-a191-e6a49c20c69d"
-    Publisher="CN=Lenovo"
+    Name="2475ccd3-f478-4974-a7eb-15da3e59f152"
+    Publisher="CN=PERSON"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="54ce5ab7-4877-4263-a191-e6a49c20c69d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="2475ccd3-f478-4974-a7eb-15da3e59f152" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>LogisticaApp</DisplayName>
-    <PublisherDisplayName>Lenovo</PublisherDisplayName>
+    <PublisherDisplayName>PERSON</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
