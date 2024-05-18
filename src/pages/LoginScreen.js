@@ -15,6 +15,8 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
+      console.log(username);
+      console.log(password);
       const response = await fetch("http://10.24.14.160:9999/login", {
         method: 'POST',
         headers: {
@@ -30,10 +32,12 @@ const LoginScreen = ({ navigation }) => {
   
       const result = await response.json();
       
-      if (result.success) {
+      if (result.token) {
+        // Simpan token ke penyimpanan lokal
+        storage.set("user.token", result.token);
+        storage.set("user.username", username)
+        // Navigasi ke layar berikutnya setelah berhasil login
         navigation.replace("MainApp");
-        storage.set("user.username", username);
-        storage.set("user.username-form-temporary", username);
       } else {
         Alert.alert("Attention", `Check your Username or Password Correctly!`);
       }
