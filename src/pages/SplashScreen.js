@@ -9,7 +9,7 @@ const minOfScreen = Math.min(width, height) * 1;
 export default SplashScreen = ({navigation}) => {
   const [isAuth, setAuth] = useState(false); 
   const username = storage.getString("user.username")
-  console.log(`Username: ${username}`);
+  const token = storage.getString("user.token")
 
   const loginHandling = async () => {
     try {
