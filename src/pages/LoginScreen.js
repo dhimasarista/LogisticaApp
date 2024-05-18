@@ -13,13 +13,33 @@ const LoginScreen = ({ navigation }) => {
     Alert.alert(`Contact your administrator`)
   }
 
-  const handleLogin = () => {
-    if (username === "dhimasarista" && password === "010502") {
-      navigation.replace("MainApp")
-      storage.set("user.username", "dhimasarista")
-      storage.set("user.username-form-temporary", username)
-    } else {
-      Alert.alert("Attention", `Check your Username or Password Correctly!`)
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://10.24.14.160:9999/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mobile',
+        },
+        body: JSON.stringify({ username, password })
+      });
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const result = await response.json();
+      
+      if (result.success) {
+        navigation.replace("MainApp");
+        storage.set("user.username", username);
+        storage.set("user.username-form-temporary", username);
+      } else {
+        Alert.alert("Attention", `Check your Username or Password Correctly!`);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      Alert.alert("Error", "Failed to connect to server. Please try again later.");
     }
   }
 

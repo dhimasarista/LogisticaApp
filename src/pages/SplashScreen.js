@@ -11,7 +11,21 @@ export default SplashScreen = ({navigation}) => {
   const username = storage.getString("user.username")
   console.log(`Username: ${username}`);
 
+  const loginHandling = async () => {
+    try {
+      const response = await fetch("http://10.24.14.160:9999/login");
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
   useEffect(() => {
+    loginHandling()
     setTimeout(() => {
       if (username !== undefined) {
         navigation.replace("MainApp")
