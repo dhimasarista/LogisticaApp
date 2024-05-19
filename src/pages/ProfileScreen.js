@@ -6,6 +6,7 @@ import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
 import Circle from '../components/circle';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import pageStyle from "../pages/stylesheet"
 
 const { width, height } = getScreenDimensions();
 
@@ -32,7 +33,7 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.welcomeText}>Welcome...</Text>
+        <Text style={pageStyle.header}>Profile</Text>
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Ionicons name="exit" size={24} color="white" />
         </TouchableOpacity>
@@ -76,11 +77,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 20,
-  },
-  welcomeText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: "black",
   },
   logoutButton: {
     backgroundColor: MAIN_COLOR,

@@ -9,23 +9,8 @@ const minOfScreen = Math.min(width, height) * 1;
 export default SplashScreen = ({navigation}) => {
   const [isAuth, setAuth] = useState(false); 
   const username = storage.getString("user.username")
-  const token = storage.getString("user.token")
-
-  const loginHandling = async () => {
-    try {
-      const response = await fetch("http://10.24.14.160:9999/login");
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const result = await response.json();
-      console.log(result);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  }
 
   useEffect(() => {
-    loginHandling()
     setTimeout(() => {
       if (username !== undefined) {
         navigation.replace("MainApp")

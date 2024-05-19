@@ -15,26 +15,10 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      console.log(username);
-      console.log(password);
-      const response = await fetch("http://10.24.14.160:9999/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'User-Agent': 'Mobile',
-        },
-        body: JSON.stringify({ username, password })
-      });
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-  
-      const result = await response.json();
-      
-      if (result.token) {
+      const usernameData = "dhimasarista"
+      const passwordData = "010502"
+      if (username === usernameData && password === passwordData) {
         // Simpan token ke penyimpanan lokal
-        storage.set("user.token", result.token);
         storage.set("user.username", username)
         // Navigasi ke layar berikutnya setelah berhasil login
         navigation.replace("MainApp");
