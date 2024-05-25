@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="2475ccd3-f478-4974-a7eb-15da3e59f152"
+    Name="69232e90-a831-4e6a-a20f-50a87c764165"
     Publisher="CN=PERSON"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="2475ccd3-f478-4974-a7eb-15da3e59f152" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="69232e90-a831-4e6a-a20f-50a87c764165" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>LogisticaApp</DisplayName>

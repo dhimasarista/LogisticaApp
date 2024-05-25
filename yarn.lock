@@ -3447,6 +3447,7 @@ __metadata:
     react-is: ^18.3.1
     react-native: 0.74.1
     react-native-chart-kit: ^6.12.0
+    react-native-datatable-component: ^2.1.14
     react-native-mmkv: ^2.12.2
     react-native-paper: ^5.12.3
     react-native-router-flux: ^4.3.1
@@ -3454,7 +3455,7 @@ __metadata:
     react-native-screens: ^3.31.1
     react-native-svg: ^15.3.0
     react-native-vector-icons: ^10.1.0
-    react-native-windows: 0.74.4
+    react-native-windows: 0.74.5
     react-test-renderer: 18.2.0
     typescript: 5.0.4
   languageName: unknown
@@ -9448,6 +9449,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-datatable-component@npm:^2.1.14":
+  version: 2.1.14
+  resolution: "react-native-datatable-component@npm:2.1.14"
+  peerDependencies:
+    react: 17.0.1
+    react-native: 0.64.2
+  checksum: 4f697677a9e81f2b139d601e3dd40873f6210f41076d386df74b1d762a2227ff5ce1c762720573b699c5aeff8f8bdf6783bb33d22de3cb8db08c4ed00455aacc
+  languageName: node
+  linkType: hard
+
 "react-native-iphone-x-helper@npm:^1.3.0":
   version: 1.3.1
   resolution: "react-native-iphone-x-helper@npm:1.3.1"
@@ -9580,9 +9591,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-windows@npm:0.74.4":
-  version: 0.74.4
-  resolution: "react-native-windows@npm:0.74.4"
+"react-native-windows@npm:0.74.5":
+  version: 0.74.5
+  resolution: "react-native-windows@npm:0.74.5"
   dependencies:
     "@babel/runtime": ^7.0.0
     "@jest/create-cache-key-function": ^29.6.3
@@ -9629,7 +9640,7 @@ __metadata:
     "@types/react": ^18.2.6
     react: 18.2.0
     react-native: ^0.74.0
-  checksum: b358a2c2db29e565fa0ed23a6d7809cfb7e1d1648bf978bec759e4fd4da56c9db59ee7bfc448e3d4923ad3c18749ffef924f0b33912691db73bab9b1a55bd352
+  checksum: be0a75d2e425f24495c6815706a98b51ffca0a31e02ebe46917ff347168cabc3b80f3e64b7337a3c045051708ee6dd2ae55135c92534142b5e9cf741b270591d
   languageName: node
   linkType: hard
 
