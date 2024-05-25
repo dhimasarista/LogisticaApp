@@ -1,142 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { StatusBar, StyleSheet, Text, View, TouchableOpacity, Button, Alert } from 'react-native';
+import React from 'react';
+import { SafeAreaView, View, Text, StyleSheet, StatusBar } from 'react-native';
+import DataTable, { COL_TYPES } from 'react-native-datatable-component';
 import { getScreenDimensions } from '../utils/getDimension';
-import pageStyle from "../pages/stylesheet"
-import { DataTable, Button as ButtonRNP} from 'react-native-paper';
+import pageStyle from "../pages/stylesheet";
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+
 const { width, height } = getScreenDimensions();
 
 const DashboardScreen = ({ navigation }) => {
-  const [page, setPage] = useState(0);
-  const [numberOfItemsPerPageList] = useState([5, 7, 9]);
-  const [itemsPerPage, onItemsPerPageChange] = useState(
-    numberOfItemsPerPageList[0]
-  );
-
-  const [items] = useState([
-   {
-     key: 1,
-     name: 'Airbus A320',
-     calories: 356,
-     fat: 16,
-   },
-   {
-     key: 2,
-     name: 'Antonov AN225',
-     calories: 262,
-     fat: 16,
-   },
-   {
-     key: 3,
-     name: 'Mistubishi R1000',
-     calories: 159,
-     fat: 6,
-   },
-   {
-     key: 4,
-     name: 'Dongfeng 932',
-     calories: 305,
-     fat: 3.7,
-   },
-   {
-     key: 1,
-     name: 'Airbus A320',
-     calories: 356,
-     fat: 16,
-   },
-   {
-     key: 2,
-     name: 'Antonov AN225',
-     calories: 262,
-     fat: 16,
-   },
-   {
-     key: 3,
-     name: 'Mistubishi R1000',
-     calories: 159,
-     fat: 6,
-   },
-   {
-     key: 4,
-     name: 'Dongfeng 932',
-     calories: 305,
-     fat: 3.7,
-   },
-   {
-     key: 1,
-     name: 'Airbus A320',
-     calories: 356,
-     fat: 16,
-   },
-   {
-     key: 2,
-     name: 'Antonov AN225',
-     calories: 262,
-     fat: 16,
-   },
-   {
-     key: 3,
-     name: 'Mistubishi R1000',
-     calories: 159,
-     fat: 6,
-   },
-   {
-     key: 4,
-     name: 'Dongfeng 932',
-     calories: 305,
-     fat: 3.7,
-   },
-  ]);
-
-  const from = page * itemsPerPage;
-  const to = Math.min((page + 1) * itemsPerPage, items.length);
-
-  useEffect(() => {
-    setPage(0);
-  }, [itemsPerPage]);
   return (
     <SafeAreaView style={styles.container}>
       <View style={pageStyle.headerContainer}>
         <Text style={pageStyle.header}>Dashboard</Text>
       </View>
-      <DataTable>
-      <DataTable.Header>
-        <DataTable.Title>Name</DataTable.Title>
-        <DataTable.Title numeric>Quantity</DataTable.Title>
-        <DataTable.Title numeric>Action</DataTable.Title>
-      </DataTable.Header>
-
-      {items.slice(from, to).map((item) => (
-        <DataTable.Row key={item.key} style={{ justifyContent:"center", flex:1 }}>
-          <DataTable.Cell>{item.name}</DataTable.Cell>
-          <DataTable.Cell numeric>{item.calories}</DataTable.Cell>
-          <DataTable.Cell numeric><ButtonRNP icon="eye" onPress={() => Alert.alert("View detail")}/></DataTable.Cell>
-        </DataTable.Row>
-      ))}
-
-      <DataTable.Pagination
-        page={page}
-        numberOfPages={Math.ceil(items.length / itemsPerPage)}
-        onPageChange={(page) => setPage(page)}
-        label={`${from + 1}-${to} of ${items.length}`}
-        numberOfItemsPerPageList={numberOfItemsPerPageList}
-        numberOfItemsPerPage={itemsPerPage}
-        onItemsPerPageChange={onItemsPerPageChange}
-        showFastPaginationControls
-        selectPageDropdownLabel={'Rows per page'}
-      />
-    </DataTable>
+      <View style={styles.tableContainer}>
+        <DataTable
+          data={[ 
+            { name: 'Muhammad Rafeh', age: 21, gender: 'male' },
+            { name: 'Muhammad Akif', age: 22, gender: 'male' },
+            { name: 'Muhammad Umar', age: 21, gender: 'male' },
+            { name: 'Amna Shakeel', age: 22, gender: 'female' },
+            { name: 'Muhammad Ammar', age: 20, gender: 'male' },
+            { name: 'Muhammad Moiz', age: 13, gender: 'male' },
+            { name: 'Amna Shakeel', age: 22, gender: 'female' },
+            { name: 'Muhammad Ammar', age: 20, gender: 'male' },
+            { name: 'Muhammad Moiz', age: 13, gender: 'male' },
+            { name: 'Amna Shakeel', age: 22, gender: 'female' },
+            { name: 'Muhammad Ammar', age: 20, gender: 'male' },
+            { name: 'Muhammad Moiz', age: 13, gender: 'male' },
+            { name: 'Amna Shakeel', age: 22, gender: 'female' },
+            { name: 'Muhammad Ammar', age: 20, gender: 'male' },
+            { name: 'Muhammad Moiz', age: 13, gender: 'male' },
+          ]}
+          colNames={['name', 'age', 'gender']}
+          colSettings={[
+            { name: 'name', type: COL_TYPES.STRING, width: '50%' }, 
+            { name: 'age', type: COL_TYPES.INT, width: '20%' }, 
+            { name: 'gender', type: COL_TYPES.STRING, width: '35%' }
+          ]}
+          noOfPages={2}
+          backgroundColor={'rgba(255, 255, 255, 0.9)'}
+          headerLabelStyle={{ color: 'black', fontSize: 12 }}
+          borderRadius={10}
+          stickyHeader={false}
+        />
+        <ActivityIndicator animating={true} color={MD2Colors.pink50} />
+      </View>
     </SafeAreaView>
   );
 };
 
-export default DashboardScreen;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#F5F5F5",
     paddingTop: StatusBar.currentHeight || 0,
     paddingHorizontal: width / 20,
   },
+  tableContainer: {
+    width: width * 0.9,
+    backgroundColor: 'transparent',
+    borderRadius: 10,
+    overflow: 'hidden',
+    margin: 2,
+    height: height / 1.7,
+  },
 });
+
+export default DashboardScreen;
