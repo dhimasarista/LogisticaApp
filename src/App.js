@@ -26,6 +26,13 @@ function MainApp() {
               }} 
             />
             <Tab.Screen 
+              name="Items" 
+              component={ProfileScreen} 
+              options={{ headerShown: false , tabBarIcon: ({focused, color, size}) => (
+                <Ionicons name="logo-octocat" size={size} color={color}/>
+              )}} 
+            />
+            <Tab.Screen 
               name="Profile" 
               component={ProfileScreen} 
               options={{ headerShown: false , tabBarIcon: ({focused, color, size}) => (
