@@ -44,7 +44,6 @@ const DashboardScreen = ({ navigation }) => {
           borderRadius={10}
           stickyHeader={false}
         />
-        <ActivityIndicator animating={true} color={MD2Colors.pink50} />
       </View>
     </SafeAreaView>
   );
