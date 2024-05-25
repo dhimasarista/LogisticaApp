@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, Image, StatusBar, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Avatar } from 'react-native-paper';
 import storage from '../utils/storage';
 import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
@@ -39,14 +40,15 @@ const ProfileScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={styles.profileContainer}>
-        <Image style={styles.profileImage} source={require('../assets/images/Logistica-Logo-Dark.png')} />
+        {/* <Image style={styles.profileImage} source={require('../assets/images/Logistica-Logo-Dark.png')} /> */}
+          <Avatar.Text size={100} label="XD" />
         <View style={styles.infoContainer}>
           <Text style={styles.profileName}>{username}</Text>
           <Text style={styles.positionText}>Supervisor</Text>
           <View style={styles.divider} />
         </View>
       </View>
-      <FlatList
+      {/* <FlatList
         data={IconList}
         renderItem={({ item }) => (
           <View style={styles.iconContainer}>
@@ -58,7 +60,7 @@ const ProfileScreen = ({ navigation }) => {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         scrollEnabled={false}
-      />
+      /> */}
     </SafeAreaView>
   );
 };
