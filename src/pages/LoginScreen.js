@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity, Alert, Image, ActivityIndicator } from 'react-native';
 import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
 import storage from '../utils/storage';
@@ -8,28 +8,36 @@ const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [doLogin, setDoLogin] = useState(false);
 
   const forgottenPassword = () => {
     Alert.alert(`Contact your administrator`)
   }
 
   const handleLogin = async () => {
-    try {
-      const usernameData = "dhimasarista"
-      const passwordData = "010502"
-      if (username === usernameData && password === passwordData) {
-        // Simpan token ke penyimpanan lokal
-        storage.set("user.username", username)
-        // Navigasi ke layar berikutnya setelah berhasil login
-        navigation.replace("MainApp");
-      } else {
-        Alert.alert("Attention", `Check your Username or Password Correctly!`);
+    setDoLogin(true); // Mengatur status doLogin menjadi true saat login dimulai
+  
+    setTimeout(async () => { // Menambahkan penundaan sebelum melakukan login
+      try {
+        const usernameData = "dhimasarista";
+        const passwordData = "010502";
+        if (username === usernameData && password === passwordData) {        
+          // Simpan token ke penyimpanan lokal
+          storage.set("user.username", username);
+          // Navigasi ke layar berikutnya setelah berhasil login
+          navigation.replace("MainApp");
+        } else {
+          Alert.alert("Attention", `Check your Username or Password Correctly!`);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        Alert.alert("Error", "Failed to connect to server. Please try again later.");
+      } finally {
+        setDoLogin(false); // Setelah login selesai, kembalikan status doLogin ke false
       }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      Alert.alert("Error", "Failed to connect to server. Please try again later.");
-    }
-  }
+    }, 5000); // Penundaan 5 detik sebelum memanggil fungsi handleLogin
+  };
+  
 
   return (
     <SafeAreaView style={styles.backgroundContainer}>
@@ -62,8 +70,8 @@ const LoginScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.loginButtonText}>Login</Text>
+        <TouchableOpacity style={styles.loginButton} onPress={handleLogin} disabled={doLogin}>
+          <Text style={styles.loginButtonText}>{doLogin === true ? <ActivityIndicator size="small" /> : "Login"}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
