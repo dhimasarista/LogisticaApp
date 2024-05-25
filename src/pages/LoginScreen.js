@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity, Alert, Image, ActivityIndicator } from 'react-native';
+import { Checkbox } from 'react-native-paper';
 import { getScreenDimensions } from '../utils/getDimension';
 import { MAIN_COLOR } from '../utils/colors';
 import storage from '../utils/storage';
@@ -71,7 +72,7 @@ const LoginScreen = ({ navigation }) => {
         </View>
 
         <TouchableOpacity style={styles.loginButton} onPress={handleLogin} disabled={doLogin}>
-          <Text style={styles.loginButtonText}>{doLogin === true ? <ActivityIndicator size="small" /> : "Login"}</Text>
+          <Text style={styles.loginButtonText}>{doLogin === true ? <ActivityIndicator size="small" color="#f0f8ff" /> : "Login"}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -137,6 +138,8 @@ const styles = StyleSheet.create({
     padding: minOfScreen / 40,
     borderRadius: 5,
     alignItems: 'center',
+    justifyContent: 'center',
+    height: height / 18
   },
   loginButtonText: {
     color: '#fff',
