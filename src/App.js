@@ -7,8 +7,9 @@ import LoginScreen from './pages/LoginScreen';
 import SplashScreen from './pages/SplashScreen'; // Create an SplashScreen component
 import DashboardScreen from './pages/DashboardScreen';
 import ProfileScreen from './pages/ProfileScreen';
-import Ionicons  from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont();
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
